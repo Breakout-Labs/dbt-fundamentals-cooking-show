@@ -34,11 +34,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   polishedmodule3demo:
-    +materialized: view
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: ephemeral
     marts:
       +materialized: table
       +meta:
         marketing:
           +schema: marketing
-    intermediate:
-      +materialized: ephemeral
