@@ -36,7 +36,7 @@ aggregated as (
         count(*) as total_delivery_count,
         count(case when delivery_status = 'delivered' then 1 end) as successful_delivery_count,
         count(case when delivery_status = 'cancelled' then 1 end) as failed_delivery_count,
-        max(delivered_at) as last_delivery_date
+        max(delivered_at) as last_delivered_at
     from joined
     group by 1
 )
@@ -47,7 +47,7 @@ select
     total_delivery_count,
     successful_delivery_count,
     failed_delivery_count,
-    last_delivery_date
+    last_delivered_at
 from aggregated
 inner join order_counts
     on aggregated.customer_id = order_counts.customer_id

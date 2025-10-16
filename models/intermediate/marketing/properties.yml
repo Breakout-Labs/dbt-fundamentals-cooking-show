@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: int_marketing__customer_order_stats
+  - name: int_marketing_customer_order_stats_aggregated
     description: This model aggregates customer order statistics. It is useful for analyzing customer purchasing behavior and order trends.
     columns:
       - name: customer_id

@@ -6,9 +6,12 @@ with source as (
 
   renamed as (
     select
-      id as delivery_id,
-      *,
-      status as delivery_status
+      id::varchar as delivery_id,
+      order_id,
+      status as delivery_status,
+      picked_up_at,
+      delivered_at,
+      _synced_at
     from source
   ),
 
