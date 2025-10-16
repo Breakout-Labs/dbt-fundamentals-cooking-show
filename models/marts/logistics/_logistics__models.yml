@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: deliveries
+    description: >
+      Customer-level delivery metrics aggregated from order and delivery data.  Provides insights into delivery success rates and customer delivery history.
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer. Primary key.
+        data_tests:
+          - unique
+          - not_null
+                
+      - name: total_order_count
+        description: Total number of orders placed by the customer
+        data_tests:
+          - not_null
+
+      - name: total_delivery_count
+        description: Total number of deliveries associated with the customer
+        data_tests:
+          - not_null
+
+      - name: successful_delivery_count
+        description: Number of successfully delivered orders
+        data_tests:
+          - not_null
+
+      - name: failed_delivery_count
+        description: Number of cancelled or failed deliveries
+        data_tests:
+          - not_null
+
+      - name: last_delivery_date
+        description: Timestamp of the customer's most recent delivery in UTC

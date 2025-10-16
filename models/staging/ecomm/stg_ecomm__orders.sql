@@ -1,5 +1,6 @@
 with source as (
-    select *
+    select 
+        *
     from {{ source('ecomm', 'orders') }}
 ),
 
@@ -16,9 +17,11 @@ renamed as (
 ),
 
 final as (
-    select *
+    select 
+        *
     from renamed
 )
 
-select *
+select 
+    *
 from final

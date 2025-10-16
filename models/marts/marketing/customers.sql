@@ -22,11 +22,18 @@ customer_metrics as (
         count(*) as count_orders,
         avg(delivery_time_from_collection) as average_delivery_time_from_collection,
         avg(delivery_time_from_order) as average_delivery_time_from_order,
-        {% for days in [30,90,360] %}
-        count(case when ordered_at > current_date - {{ days }} then 1 end) as count_orders_last_{{ days }}_days{% if not loop.last %},{% endif %}
+
+        -- Count the number of days between today and the time interval indicates in the list 
+        {%- for days in [30,90,360] %}
+            count(case when ordered_at > current_date - {{ days }} then 1 end) as count_orders_last_{{ days }}_days
+            {%- if not loop.last -%}
+                ,
+            {%- endif -%}
         {% endfor %},
+
         min(ordered_at) as first_order_at,
         max(ordered_at) as most_recent_order_at,
+    
     from orders
     group by 1
 
@@ -44,9 +51,15 @@ joined as (
         coalesce(customer_metrics.count_orders,0) as count_orders,
         customer_metrics.average_delivery_time_from_collection,
         customer_metrics.average_delivery_time_from_order,
-        {% for days in [30,90,360] %}
-        customer_metrics.count_orders_last_{{ days }}_days{% if not loop.last %},{% endif %}
+
+        -- Select the needed columns for the aggregated order counts
+        {%- for days in [30,90,360] %}
+            customer_metrics.count_orders_last_{{ days }}_days
+            {%- if not loop.last -%}
+                ,
+            {%- endif -%}
         {% endfor %},
+
         survey_responses.survey_date,
         customers.created_at,
         customer_metrics.first_order_at,

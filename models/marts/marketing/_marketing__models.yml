@@ -1,0 +1,104 @@
+version: 2
+
+models:
+  - name: active_customers
+    description: >
+      Active customers with their order statistics. This model combines customer  information with aggregated order metrics to provide a comprehensive view  of engaged customers.
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer. Primary key.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: Customer's first name
+        data_tests:
+          - not_null
+
+      - name: last_name
+        description: Customer's last name
+        data_tests:
+          - not_null
+
+      - name: count_orders
+        description: Total number of orders placed by the customer
+
+      - name: first_order_at
+        description: Timestamp of the customer's first order in UTC
+
+      - name: most_recent_order_at
+        description: Timestamp of the customer's most recent order in UTC
+
+      - name: average_delivery_time_from_collection
+        description: Average delivery time in minutes from pickup to delivery
+
+      - name: average_delivery_time_from_order
+        description: Average delivery time in minutes from order placement to delivery
+
+      - name: count_orders_last_30_days
+        description: Number of orders placed in the last 30 days
+
+      - name: count_orders_last_90_days
+        description: Number of orders placed in the last 90 days
+
+      - name: count_orders_last_360_days
+        description: Number of orders placed in the last 360 days
+
+  - name: customers
+    description: >
+      Core customer dimension table enriched with order metrics and survey data.  This is the primary source of truth for customer information across the organization.
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer. Primary key.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: Customer's first name
+        data_tests:
+          - not_null
+
+      - name: last_name
+        description: Customer's last name
+        data_tests:
+          - not_null
+
+      - name: email
+        description: Customer's email address
+        data_tests:
+          - unique
+          - not_null
+
+      - name: satisfaction_score
+        description: Customer satisfaction score from survey responses
+
+      - name: survey_date
+        description: Date when the customer completed the satisfaction survey
+
+      - name: count_orders
+        description: Total number of orders placed by the customer. Defaults to 0 for customers with no orders.
+        data_tests:
+          - not_null
+
+      - name: first_order_at
+        description: Timestamp of the customer's first order in UTC
+
+      - name: most_recent_order_at
+        description: Timestamp of the customer's most recent order in UTC
+
+      - name: average_delivery_time_from_collection
+        description: Average delivery time in minutes from pickup to delivery across all orders
+
+      - name: average_delivery_time_from_order
+        description: Average delivery time in minutes from order placement to delivery across all orders
+
+      - name: count_orders_last_30_days
+        description: Number of orders placed in the last 30 days
+
+      - name: count_orders_last_90_days
+        description: Number of orders placed in the last 90 days
+
+      - name: count_orders_last_360_days
+        description: Number of orders placed in the last 360 days
