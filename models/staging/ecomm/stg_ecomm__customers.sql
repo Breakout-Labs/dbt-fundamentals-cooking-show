@@ -6,8 +6,8 @@ with source as (
 
 renamed as (
   select
-    id as customer_id,
-    *
+    id::varchar as customer_id,
+    * exclude id
   from source
 ),
 

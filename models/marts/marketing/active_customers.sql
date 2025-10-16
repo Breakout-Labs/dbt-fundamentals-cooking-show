@@ -4,10 +4,10 @@ with customers as (
     from {{ ref('customers') }}
 ),
 
-customer_order_stats as (
+customer_order_stats_aggregated as (
     select
         *
-    from {{ ref('int_marketing__customer_order_stats') }}
+    from {{ ref('int_marketing_customer_order_stats_aggregated') }}
 ),
 
 joined as (
@@ -15,9 +15,9 @@ joined as (
         customer_id,
         customers.first_name,
         customers.last_name,
-        customer_order_stats.* exclude (customer_id)
+        customer_order_stats_aggregated.* exclude (customer_id)
     from customers
-    inner join customer_order_stats using (customer_id)
+    inner join customer_order_stats_aggregated using (customer_id)
 )
 
 select
