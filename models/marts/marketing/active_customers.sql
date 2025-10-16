@@ -15,7 +15,7 @@ joined as (
         customer_id,
         customers.first_name,
         customers.last_name,
-        customer_order_stats.* exclude (customer_id)
+        customer_order_stats_aggregated.* exclude (customer_id)
     from customers
     inner join customer_order_stats_aggregated using (customer_id)
 )
