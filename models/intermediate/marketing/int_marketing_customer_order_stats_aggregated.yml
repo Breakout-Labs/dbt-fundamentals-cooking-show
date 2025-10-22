@@ -12,6 +12,9 @@ models:
     columns:
       - name: customer_id
         description: A unique id for each customer.
+        tests:
+          - not_null
+          - unique
 
       - name: orders_ordered
         description: The total number of orders currently marked as 'ordered' for each customer.

@@ -6,7 +6,7 @@ with source as (
 
 renamed as (
     select
-        order_line_id,
+        id as order_line_id,
         order_id,
         product_id,
         quantity,
