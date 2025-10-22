@@ -15,6 +15,7 @@ transformed as (
 
 final as (
   select
+    {{ dbt_utils.generate_surrogate_key(['customer_email', 'survey_date']) }} as customer_survey_id,
     *
   from transformed
 )
