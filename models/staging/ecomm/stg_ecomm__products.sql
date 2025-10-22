@@ -6,13 +6,14 @@ with source as (
 
 renamed as (
     select
-        product_id,
-        product_name,
-        category,
-        subcategory,
+        id as product_id,
+        name as product_name,
+        category as product_category,
+        subcategory as product_subcategory,
         unit_price,
         is_active,
-        created_at
+        created_at,
+        _synced_at
     from source
 ),
 
