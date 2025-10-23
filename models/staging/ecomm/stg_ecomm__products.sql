@@ -11,6 +11,7 @@ renamed as (
         category as product_category,
         subcategory as product_subcategory,
         unit_price,
+        variants,
         is_active,
         created_at,
         _synced_at
