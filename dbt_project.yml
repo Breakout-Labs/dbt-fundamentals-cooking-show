@@ -43,5 +43,5 @@ models:
     marts:
       +materialized: table
       +schema: marts
-      finance:
-        +schema: finance  # Q: If the the base schema is dbt_demo, in which schema will finance marts be built? 
+      ecommerce:
+        +schema: ecommerce  # Q: If the the base schema is dbt_demo, in which schema will ecommerce marts be built? 
