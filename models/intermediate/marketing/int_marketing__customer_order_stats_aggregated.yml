@@ -6,8 +6,6 @@ models:
     data_tests:
       - dbt_utils.expression_is_true:
           expression: "orders_total = orders_ordered + orders_pending + orders_cancelled + orders_delivered"
-          config:
-            severity: error
 
     columns:
       - name: customer_id

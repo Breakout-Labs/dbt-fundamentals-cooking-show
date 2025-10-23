@@ -7,7 +7,7 @@ with customers as (
 customer_order_stats_aggregated as (
     select
         *
-    from {{ ref('int_marketing_customer_order_stats_aggregated') }}
+    from {{ ref('int_marketing__customer_order_stats_aggregated') }}
 ),
 
 joined as (
