@@ -44,4 +44,4 @@ models:
       +materialized: table
       +schema: marts
       finance:
-        +schema: finance  # Q: If the the base schema is dbt_demo, in which schema will finance marts be built? 
+        +schema: finance  # Q: If the the base schema is dbt_fundamentals, in which schema will finance marts be built? 
