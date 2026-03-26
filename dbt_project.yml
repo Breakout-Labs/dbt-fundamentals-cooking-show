@@ -34,6 +34,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   dbt_fundamentals:
+    +static_analysis: baseline
     staging:
       +materialized: view
       +schema: staging
