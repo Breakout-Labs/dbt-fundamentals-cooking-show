@@ -22,7 +22,7 @@ orders_with_lines as (
         orders.order_status,
         orders.ordered_at,
         order_lines.order_line_id,
-        order_lines.product_id,
+        order_lines.product_i,
         order_lines.quantity,
         order_lines.unit_price,
         order_lines.line_total
